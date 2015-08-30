@@ -1,4 +1,15 @@
 #include "StringProcess.h"
+#include <sstream>
+
+namespace patch
+{
+    template < typename T > std::string to_string( const T& n )
+    {
+        std::ostringstream stm ;
+        stm << n ;
+        return stm.str() ;
+    }
+}
 
 void Trim_left(std::string &c)
 {
@@ -86,6 +97,32 @@ bool IsIn(std::string &str,std::string &substr) {
 		return isTrue;
 	}
 }
+bool IsIn(const std::string &str,const std::string &substr) {
+	if (substr.length() > str.length()) {
+		return false;
+	}
+	else {
+		int i = 0;
+		bool isTrue = true;
+		while (i <=(int) (str.length()-substr.length())) {
+			isTrue = true;
+			for (int j = 0; j <(int) substr.length(); j++) {
+				if (substr[j] != str[i + j]) {
+					isTrue = false;
+					break;
+				}
+			}
+			if (isTrue) {
+				break;
+			}
+			else {
+				i++;
+			}
+		}
+		return isTrue;
+	}
+}
+
 void Seperate(std::string & name, std::string & firstname, std::string & lastname){
 	int i = name.length() - 1;
 	lastname = "";
@@ -121,5 +158,6 @@ char * StringToChar(std::string &str) {
 	return cstr;
 }
 std::string IntToString(int i) {
-	return  std::to_string(i);
+	return  patch::to_string(i);
 }
+
