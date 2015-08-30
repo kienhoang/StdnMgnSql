@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _STUDENTCONSOLE_H
+#define _STUDENTCONSOLE_H
+
 #include "Student.h"
 #include "sqlite3.h"
 #include <iostream>
@@ -41,3 +43,5 @@ public:
 public :
 	void start_console();
 };
+
+#endif // _STUDENTCONSOLE_H

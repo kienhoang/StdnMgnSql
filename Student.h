@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _STUDENT_H
+#define _STUDENT_H
 #include <string>
 #include <fstream>
 #include "StringProcess.h"
@@ -39,3 +40,5 @@ public:
 	Student * FindName(const std::string &name);
 	Student * LastPoint();
 };
+
+#endif // _STUDENT_H
